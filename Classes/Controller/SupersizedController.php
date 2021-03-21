@@ -146,6 +146,17 @@ class SupersizedController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
 			// get the values for javascript array 'slides'
 			$this->settings['general']['slideValues'][0] = array('image' => $firstSlide);
 		}
+        //
+        // Get FAL files
+        if(isset($this->settings['general']['images']) && (int)$this->settings['general']['images'] > 0) {
+            $content = $this->configurationManager->getContentObject()->data;
+            $fileRepository = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Resource\FileRepository::class);
+            $this->settings['general']['images'] = $fileRepository->findByRelation(
+                'tt_content',
+                'supersized_image',
+                $content['uid']
+            );
+        }
 	}
 
 	/**

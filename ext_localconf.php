@@ -13,3 +13,7 @@ $GLOBALS['TYPO3_CONF_VARS']['SYS']['formEngine']['nodeRegistry'][1586260063] = [
     'priority' => '70',
     'class' => \FFREWER\Frsupersized\Form\Element\SelectOrCheckbox::class
 ];
+
+
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/install']['update']['supersizedFlexformFiles']
+    = \FFREWER\Frsupersized\Updates\FlexformFilesUpdater::class;
